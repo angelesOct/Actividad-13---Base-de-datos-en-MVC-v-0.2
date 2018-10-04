@@ -153,4 +153,5 @@ public class ModelAgenda {
                 JOptionPane.showMessageDialog(null,"Error "+err.getMessage());         
         }
     }
+//*****************METODOS DE BOTONES Nuevo, Borrar, Guardar y Modificar**************************
 }

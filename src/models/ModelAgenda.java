@@ -24,6 +24,16 @@ public class ModelAgenda {
 
     private String nombre;
     private String email;
+    private String limpiar_cajas="";
+
+    public String getLimpiar_cajas() {
+        return limpiar_cajas;
+    }
+
+    public void setLimpiar_cajas(String limpiar_cajas) {
+        this.limpiar_cajas = limpiar_cajas;
+    }
+    
 
     public String getNombre() {
         return nombre;

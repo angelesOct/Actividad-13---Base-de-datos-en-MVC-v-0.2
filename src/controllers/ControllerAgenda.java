@@ -34,10 +34,10 @@ public class ControllerAgenda {
                 jbtn_siguiente_actionPerformed();
             } else if (e.getSource() == viewAgenda.jbtn_ultimo) {
                 jbtn_ultimo_actionPerformed();
+            }else if (e.getSource() == viewAgenda.jbtn_nuevo) {
+                jbtn_nuevo_actionPerformed();
             }
-
         }
-
     };
 
     /**
@@ -80,6 +80,7 @@ public class ControllerAgenda {
         viewAgenda.jbtn_anterior.addActionListener(actionListener);
         viewAgenda.jbtn_siguiente.addActionListener(actionListener);
         viewAgenda.jbtn_ultimo.addActionListener(actionListener);
+        viewAgenda.jbtn_nuevo.addActionListener(actionListener);
     }
 
     /**
@@ -112,7 +113,6 @@ public class ControllerAgenda {
         viewAgenda.jtf_nombre.setText(modelAgenda.getNombre());//muestra el numbre en la vista
         viewAgenda.jtf_email.setText(modelAgenda.getEmail()); //muestra el email en la vista
     }
-
     /**
      * Método para ver el siguiente registro de la tabla contactos
      */
@@ -121,5 +121,13 @@ public class ControllerAgenda {
         modelAgenda.moverSiguienteRegistro(); //se invoca al boton moverPrimerRegistro
         viewAgenda.jtf_nombre.setText(modelAgenda.getNombre());//muestra el numbre en la vista
         viewAgenda.jtf_email.setText(modelAgenda.getEmail()); //muestra el email en la vista
+    }
+//*****************BOTONES Nuevo, Borrar, Guardar y Modificar**************************
+     /**
+     * Método para limpiar las cajas y proceder a ingresar un nuevo registro
+     */
+    private void jbtn_nuevo_actionPerformed(){
+        viewAgenda.jtf_nombre.setText(modelAgenda.getLimpiar_cajas());//limpia la caja nombr
+        viewAgenda.jtf_email.setText(modelAgenda.getLimpiar_cajas()); //limia la caja email
     }
 }

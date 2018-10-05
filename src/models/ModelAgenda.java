@@ -154,4 +154,14 @@ public class ModelAgenda {
         }
     }
 //*****************METODOS DE BOTONES Nuevo, Borrar, Guardar y Modificar**************************
+    public void Guardar(String nombre, String email){
+        System.out.print("Programa accion guardar");//verificar que la conexion MVC esta correcta
+        try{ 
+            st.executeUpdate("Insert into contactos (nombre,email)"+" values ('"+nombre+"','"+email+"');"); 
+            JOptionPane.showMessageDialog(null,"Guardado con exito ");           
+        } catch(Exception err)         
+        { 
+            JOptionPane.showMessageDialog(null,"Error "+err.getMessage()); 
+        }
+    }
 }

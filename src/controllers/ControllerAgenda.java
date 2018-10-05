@@ -36,6 +36,8 @@ public class ControllerAgenda {
                 jbtn_ultimo_actionPerformed();
             }else if (e.getSource() == viewAgenda.jbtn_nuevo) {
                 jbtn_nuevo_actionPerformed();
+            }else if (e.getSource() == viewAgenda.jbtn_guardar) {
+                jbtn_guardar_actionPerformed();
             }
         }
     };
@@ -81,6 +83,9 @@ public class ControllerAgenda {
         viewAgenda.jbtn_siguiente.addActionListener(actionListener);
         viewAgenda.jbtn_ultimo.addActionListener(actionListener);
         viewAgenda.jbtn_nuevo.addActionListener(actionListener);
+        viewAgenda.jbtn_guardar.addActionListener(actionListener);
+        viewAgenda.jbtn_modificar.addActionListener(actionListener);
+        viewAgenda.jbtn_borrar.addActionListener(actionListener);
     }
 
     /**
@@ -127,7 +132,13 @@ public class ControllerAgenda {
      * Método para limpiar las cajas y proceder a ingresar un nuevo registro
      */
     private void jbtn_nuevo_actionPerformed(){
-        viewAgenda.jtf_nombre.setText(modelAgenda.getLimpiar_cajas());//limpia la caja nombr
+        viewAgenda.jtf_nombre.setText(modelAgenda.getLimpiar_cajas());//limpia la caja nombre
         viewAgenda.jtf_email.setText(modelAgenda.getLimpiar_cajas()); //limia la caja email
+    }
+    /**
+     * Método para Guardar nuevos Registros
+    */
+    private void jbtn_guardar_actionPerformed(){
+        modelAgenda.Guardar(viewAgenda.jtf_nombre.getText(),viewAgenda.jtf_email.getText());
     }
 }

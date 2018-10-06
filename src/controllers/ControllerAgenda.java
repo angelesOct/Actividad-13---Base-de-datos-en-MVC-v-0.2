@@ -57,7 +57,7 @@ public class ControllerAgenda {
         this.viewAgenda = viewAgenda;
         initComponents();
         setActionListener();
-        initDB();
+        initDB();       
     }
 
     /**
@@ -68,6 +68,7 @@ public class ControllerAgenda {
         modelAgenda.conectarDB();
         viewAgenda.jtf_nombre.setText(modelAgenda.getNombre());
         viewAgenda.jtf_email.setText(modelAgenda.getEmail());
+        viewAgenda.jbtn_guardar.setEnabled(false);//El boton guardar aparecera inhabilitado
     }
     /**
      * Metodo para inicializar la ViewAgenda
@@ -136,6 +137,9 @@ public class ControllerAgenda {
      * Método para limpiar las cajas y proceder a ingresar un nuevo registro
      */
     private void jbtn_nuevo_actionPerformed(){
+        viewAgenda.jbtn_guardar.setEnabled(true);//El boton guardar aparecera habilitado
+        viewAgenda.jbtn_modificar.setEnabled(false);//El boton modificar aparecera inhabilitado
+        viewAgenda.jbtn_borrar.setEnabled(false);//El boton borrar aparecera inhabilitado
         viewAgenda.jtf_nombre.setText(modelAgenda.getLimpiar_cajas());//limpia la caja nombre
         viewAgenda.jtf_email.setText(modelAgenda.getLimpiar_cajas()); //limia la caja email
     }
@@ -146,6 +150,9 @@ public class ControllerAgenda {
         modelAgenda.setNombre(viewAgenda.jtf_nombre.getText()); //Nuevo valor de nombre
         modelAgenda.setEmail(viewAgenda.jtf_email.getText()); // nuevo valor de email
         modelAgenda.Guardar();//llama al metodo Guardar
+        viewAgenda.jbtn_modificar.setEnabled(true);//El boton modificar aparecera inhabilitado
+        viewAgenda.jbtn_borrar.setEnabled(true);//El boton borrar aparecera inhabilitado
+        viewAgenda.jbtn_guardar.setEnabled(false);//El boton guardar aparecera inhabilitado
     }
     private void jbtn_Borrar_actionPerformed(){
         modelAgenda.Borrar();//llama al metodo Borrar 

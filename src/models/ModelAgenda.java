@@ -154,14 +154,38 @@ public class ModelAgenda {
         }
     }
 //*****************METODOS DE BOTONES Nuevo, Borrar, Guardar y Modificar**************************
-    public void Guardar(String nombre, String email){
-        System.out.print("Programa accion guardar");//verificar que la conexion MVC esta correcta
+    /**
+     * el metodo Guardara un nuevo registro
+     */
+    public void Guardar(){
         try{ 
+            nombre = this.getNombre();
+            email = this.getEmail();
             st.executeUpdate("Insert into contactos (nombre,email)"+" values ('"+nombre+"','"+email+"');"); 
-            JOptionPane.showMessageDialog(null,"Guardado con exito ");           
+            JOptionPane.showMessageDialog(null,"Guardado con exito ");
+            this.conectarDB();
+            this.moverUltimoRegistro(); //sellama al ultimo registro agregado
         } catch(Exception err)         
         { 
             JOptionPane.showMessageDialog(null,"Error "+err.getMessage()); 
+        }
+    }
+     /**
+     * el metodo borrara un registro seleccionado
+     */
+    public void Borrar(){
+        int confirmar = JOptionPane.showConfirmDialog(null, "Esta seguro que desea eliminar el registro?");
+        if(JOptionPane.OK_OPTION==confirmar){
+            try{ 
+               int id_contacto=rs.getInt("id_contacto");
+               st.executeUpdate("delete from contactos where id_contacto = "+ id_contacto +"; ");
+               JOptionPane.showMessageDialog(null,"Mensaje Borrado");
+               st.executeQuery("select*from contactos");  
+               this.conectarDB();
+               this.moverUltimoRegistro(); //se llama al ultimo registro agregado
+            } catch(Exception err){ 
+                JOptionPane.showMessageDialog(null,"Error "+err.getMessage()); 
+            }
         }
     }
 }

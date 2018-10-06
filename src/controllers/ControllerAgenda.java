@@ -39,6 +39,9 @@ public class ControllerAgenda {
             }else if (e.getSource() == viewAgenda.jbtn_guardar) {
                 jbtn_guardar_actionPerformed();
             }
+            else if (e.getSource() == viewAgenda.jbtn_borrar) {
+                jbtn_Borrar_actionPerformed();
+            }
         }
     };
 
@@ -139,6 +142,11 @@ public class ControllerAgenda {
      * Método para Guardar nuevos Registros
     */
     private void jbtn_guardar_actionPerformed(){
-        modelAgenda.Guardar(viewAgenda.jtf_nombre.getText(),viewAgenda.jtf_email.getText());
+        modelAgenda.setNombre(viewAgenda.jtf_nombre.getText()); //Nuevo valor de nombre
+        modelAgenda.setEmail(viewAgenda.jtf_email.getText()); // nuevo valor de email
+        modelAgenda.Guardar();//llama al metodo Guardar
     }
+    private void jbtn_Borrar_actionPerformed(){
+        modelAgenda.Borrar();//llama al metodo Borrar 
+    }  
 }

@@ -38,10 +38,11 @@ public class ControllerAgenda {
                 jbtn_nuevo_actionPerformed();
             }else if (e.getSource() == viewAgenda.jbtn_guardar) {
                 jbtn_guardar_actionPerformed();
-            }
-            else if (e.getSource() == viewAgenda.jbtn_borrar) {
+            }else if (e.getSource() == viewAgenda.jbtn_borrar) {
                 jbtn_Borrar_actionPerformed();
-            }
+            }else if (e.getSource() == viewAgenda.jbtn_modificar) {
+                jbtn_Modificar_actionPerformed();
+            }  
         }
     };
 
@@ -148,5 +149,11 @@ public class ControllerAgenda {
     }
     private void jbtn_Borrar_actionPerformed(){
         modelAgenda.Borrar();//llama al metodo Borrar 
-    }  
+    } 
+    private void jbtn_Modificar_actionPerformed(){
+        System.out.println("Action del boton jbtn_modificar");
+        modelAgenda.setNombre(viewAgenda.jtf_nombre.getText()); //Nuevo valor de nombre
+        modelAgenda.setEmail(viewAgenda.jtf_email.getText()); // nuevo valor de email
+        modelAgenda.Modificar();//llama al metodo Modificar
+    }
 }

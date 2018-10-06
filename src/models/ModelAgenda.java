@@ -170,16 +170,18 @@ public class ModelAgenda {
             JOptionPane.showMessageDialog(null,"Error "+err.getMessage()); 
         }
     }
-     /**
+    /**
      * el metodo borrara un registro seleccionado
-     */
+    */
     public void Borrar(){
         int confirmar = JOptionPane.showConfirmDialog(null, "Esta seguro que desea eliminar el registro?");
         if(JOptionPane.OK_OPTION==confirmar){
             try{ 
+               nombre = this.getNombre();
+               email = this.getEmail();
                int id_contacto=rs.getInt("id_contacto");
                st.executeUpdate("delete from contactos where id_contacto = "+ id_contacto +"; ");
-               JOptionPane.showMessageDialog(null,"Mensaje Borrado");
+               JOptionPane.showMessageDialog(null,"registro Borrado");
                st.executeQuery("select*from contactos");  
                this.conectarDB();
                this.moverUltimoRegistro(); //se llama al ultimo registro agregado
@@ -187,5 +189,24 @@ public class ModelAgenda {
                 JOptionPane.showMessageDialog(null,"Error "+err.getMessage()); 
             }
         }
+    }
+    /**
+     * el metodo Modificara un registro seleccionado
+    */
+    public void Modificar(){
+        System.out.print("modificar");
+        int confirmar = JOptionPane.showConfirmDialog(null, "Esta seguro que desea modifiar el registro?");
+        if(JOptionPane.OK_OPTION==confirmar){
+            try{ 
+               int id_contacto=rs.getInt("id_contacto");
+               st.executeUpdate("update contactos set nombre = '"+ nombre +"', email = '"+ email +"' where id_contacto = "+ id_contacto +"; ");
+               JOptionPane.showMessageDialog(null,"Registro modificado");
+               st.executeQuery("select*from contactos");  
+               this.conectarDB();
+               this.moverUltimoRegistro(); //se llama al ultimo registro agregado
+            } catch(Exception err){ 
+                JOptionPane.showMessageDialog(null,"Error "+err.getMessage()); 
+            }
+        } 
     }
 }
